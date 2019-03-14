@@ -166,16 +166,22 @@ namespace InspectionSystemManager
             TeachWnd = new TeachingWindow();
             ImageDeleteWnd = new ImageDeleteWindow(this.labelTitle.Text);
 
-            if (eProjectType.TRIM_FORM == _ProjectType)
+            if (eProjectType.SORTER == _ProjectType)
+            {
+                btnImageResultDisplay.Visible = true;
+                IsResultDisplay = false;
+            }
+
+            else if (eProjectType.TRIM_FORM == _ProjectType)
             {
                 btnImageResultDisplay.Visible = false;
                 IsResultDisplay = true;
             }
 
-            else if (eProjectType.SORTER == _ProjectType)
+            else if (eProjectType.BC_QCC == _ProjectType)
             {
-                btnImageResultDisplay.Visible = true;
-                IsResultDisplay = false;
+                btnImageResultDisplay.Visible = false;
+                IsResultDisplay = true;
             }
         }
 
@@ -1451,6 +1457,9 @@ namespace InspectionSystemManager
             else if (ProjectItem == eProjectItem.SURFACE)           SendResParam = GetSurfaceInspectionResultAnalysis();
             else if (ProjectItem == eProjectItem.LEAD_TRIM_INSP)    SendResParam = GetLeadTrimInspectionResultAnalysis();
             else if (ProjectItem == eProjectItem.LEAD_FORM_ALIGN)   SendResParam = GetLeadFormAlignResultAnalysis();
+            else if (ProjectItem == eProjectItem.BC_IMG_SAVE)       SendResParam = GetCardImageSaveResultAnalysis();
+            else if (ProjectItem == eProjectItem.BC_ID)             SendResParam = GetCardIDResultAnalysis();
+            else if (ProjectItem == eProjectItem.BC_EXIST)          SendResParam = GetCardExistResultAnalysis();
 
             return _Result;
         }

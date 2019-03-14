@@ -118,6 +118,9 @@ namespace InspectionSystemManager
             else if (_ProjectItem == eProjectItem.SURFACE)          ucCogBlobReferWnd.Initialize(false);
             else if (_ProjectItem == eProjectItem.LEAD_TRIM_INSP)   ucCogBlobReferWnd.Initialize(false);
             else if (_ProjectItem == eProjectItem.LEAD_FORM_ALIGN)  ucCogBlobReferWnd.Initialize(false);
+            else if (_ProjectItem == eProjectItem.BC_IMG_SAVE)      ucCogBlobReferWnd.Initialize(false);
+            else if (_ProjectItem == eProjectItem.BC_ID)            ucCogBlobReferWnd.Initialize(false);
+            else if (_ProjectItem == eProjectItem.BC_EXIST)         ucCogBlobReferWnd.Initialize(false);
 
             InspPatternProcess = new InspectionPattern();
             InspAutoPatternProcess = new InspectionAutoPattern();
@@ -194,6 +197,21 @@ namespace InspectionSystemManager
                 ContextMenuAlgo.MenuItems.Add("기준 패턴 검사", new EventHandler(PatternFindAlgorithm));
             }
 
+            else if (ProjectItem == eProjectItem.BC_IMG_SAVE)
+            {
+
+            }
+
+            else if (ProjectItem == eProjectItem.BC_ID)
+            {
+                ContextMenuAlgo.MenuItems.Add("코드 검사", new EventHandler(BarCodeIDAlgorithm));
+            }
+
+            else if (ProjectItem == eProjectItem.BC_EXIST)
+            {
+                ContextMenuAlgo.MenuItems.Add("기준 라인 검사", new EventHandler(LineFineAlgorithm));
+            }
+
             else
             {
                 ContextMenuAlgo.MenuItems.Add("Search a Pattern reference", new EventHandler(PatternFindAlgorithm));
@@ -217,6 +235,7 @@ namespace InspectionSystemManager
             switch (_ProjectType)
             {
                 case eProjectType.TRIM_FORM:
+                case eProjectType.BC_QCC:
                     btnInspectionAreaCopy.Visible = false;
                     btnShowAllArea.Visible = false;
                     btnMapDataApplyInspectionArea.Visible = false;
@@ -1164,6 +1183,21 @@ namespace InspectionSystemManager
                 else if (ProjectItem == eProjectItem.LEAD_FORM_ALIGN)
                 {
                     if (InspParam.InspAreaParam[_ID].InspAlgoParam[iLoopCount].AlgoType == (int)eAlgoType.C_PATTERN) _Name = "기준 패턴 검사";      //"Pattern - Reference"
+                }
+
+                else if (ProjectItem == eProjectItem.BC_IMG_SAVE)
+                {
+
+                }
+
+                else if (ProjectItem == eProjectItem.BC_ID)
+                {
+                    if (InspParam.InspAreaParam[_ID].InspAlgoParam[iLoopCount].AlgoType == (int)eAlgoType.C_ID) _Name = "코드 검사"; //"ID - Search"
+                }
+
+                else if (ProjectItem == eProjectItem.BC_EXIST)
+                {
+                    if (InspParam.InspAreaParam[_ID].InspAlgoParam[iLoopCount].AlgoType == (int)eAlgoType.C_LINE_FIND) _Name = "제품 라인 검사";
                 }
 
                 AddInspectionAlgo(_Index, _Name, _Enable);

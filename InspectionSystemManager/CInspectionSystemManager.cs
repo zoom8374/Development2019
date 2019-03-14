@@ -290,7 +290,7 @@ namespace InspectionSystemManager
         private void SetResultData(object _Value)
         {
             var _InspSysManagerEvent = InspSysManagerEvent;
-            InspSysManagerEvent?.Invoke(eISMCMD.SET_RESULT, _Value);
+            _InspSysManagerEvent?.Invoke(eISMCMD.SET_RESULT, _Value);
         }
 
         private void InspectionComplete(object _Value, int _ID)

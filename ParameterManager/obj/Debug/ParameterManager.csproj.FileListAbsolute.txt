@@ -51,3 +51,19 @@ D:\VisionProgram\KPVisionInspectionProgram\ParameterManager\bin\Debug\LogMessage
 D:\VisionProgram\KPVisionInspectionProgram\ParameterManager\bin\Debug\Cognex.VisionPro.xml
 D:\VisionProgram\KPVisionInspectionProgram\ParameterManager\bin\Debug\Cognex.VisionPro.Core.xml
 D:\VisionProgram\KPVisionInspectionProgram\ParameterManager\bin\Debug\Cognex.VisionPro.PMAlign.xml
+C:\Zoom\Source management\Project\KPVisionInspectionProgram\ParameterManager\bin\Debug\ParameterManager.dll
+C:\Zoom\Source management\Project\KPVisionInspectionProgram\ParameterManager\bin\Debug\ParameterManager.pdb
+C:\Zoom\Source management\Project\KPVisionInspectionProgram\ParameterManager\bin\Debug\Cognex.VisionPro.Core.dll
+C:\Zoom\Source management\Project\KPVisionInspectionProgram\ParameterManager\bin\Debug\Cognex.VisionPro.dll
+C:\Zoom\Source management\Project\KPVisionInspectionProgram\ParameterManager\bin\Debug\Cognex.VisionPro.PMAlign.dll
+C:\Zoom\Source management\Project\KPVisionInspectionProgram\ParameterManager\bin\Debug\LogMessageManager.dll
+C:\Zoom\Source management\Project\KPVisionInspectionProgram\ParameterManager\bin\Debug\log4net.dll
+C:\Zoom\Source management\Project\KPVisionInspectionProgram\ParameterManager\bin\Debug\Cognex.VisionPro.Interop.Core.dll
+C:\Zoom\Source management\Project\KPVisionInspectionProgram\ParameterManager\bin\Debug\stdole.dll
+C:\Zoom\Source management\Project\KPVisionInspectionProgram\ParameterManager\bin\Debug\LogMessageManager.pdb
+C:\Zoom\Source management\Project\KPVisionInspectionProgram\ParameterManager\bin\Debug\Cognex.VisionPro.xml
+C:\Zoom\Source management\Project\KPVisionInspectionProgram\ParameterManager\bin\Debug\Cognex.VisionPro.Core.xml
+C:\Zoom\Source management\Project\KPVisionInspectionProgram\ParameterManager\bin\Debug\Cognex.VisionPro.PMAlign.xml
+C:\Zoom\Source management\Project\KPVisionInspectionProgram\ParameterManager\obj\Debug\ParameterManager.csprojResolveAssemblyReference.cache
+C:\Zoom\Source management\Project\KPVisionInspectionProgram\ParameterManager\obj\Debug\ParameterManager.dll
+C:\Zoom\Source management\Project\KPVisionInspectionProgram\ParameterManager\obj\Debug\ParameterManager.pdb

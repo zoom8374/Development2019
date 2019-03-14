@@ -15,7 +15,7 @@ namespace ParameterManager
     /// <summary>
     /// Project Item
     /// </summary>
-    public enum eProjectItem { NONE = 0, SURFACE, LEAD_TRIM_INSP, LEAD_FORM_ALIGN };
+    public enum eProjectItem { NONE = 0, SURFACE, LEAD_TRIM_INSP, LEAD_FORM_ALIGN, BC_IMG_SAVE, BC_ID, BC_EXIST };
 
     /// <summary>
     /// Algorithm Type

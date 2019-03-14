@@ -123,6 +123,14 @@ namespace KPVisionInspectionFramework
                 rbConfig.Visible = false;
                 rbFolder.Visible = false;
             }
+
+            else if ((int)eProjectType.BC_QCC == ParamManager.SystemParam.ProjectType)
+            {
+                rbAlign.Visible = false;
+                rbSerial.Visible = false;
+                rbConfig.Visible = false;
+                rbFolder.Visible = false;
+            }
             #endregion Ribbon Menu Setting
 
             #region Log Window Initialize
@@ -166,6 +174,7 @@ namespace KPVisionInspectionFramework
             if ((int)eProjectType.NONE == ParamManager.SystemParam.ProjectType) 			MainProcess = new MainProcessDefault();
             else if ((int)eProjectType.SORTER == ParamManager.SystemParam.ProjectType)      MainProcess = new MainProcessSorter();
             else if ((int)eProjectType.TRIM_FORM == ParamManager.SystemParam.ProjectType)   MainProcess = new MainProcessTrimForm();
+            else if ((int)eProjectType.BC_QCC == ParamManager.SystemParam.ProjectType)      MainProcess = new MainProcessCardManager();
             else                                                                            MainProcess = new MainProcessBase();
 
             MainProcess.MainProcessCommandEvent += new MainProcessBase.MainProcessCommandHandler(MainProcessCommandEventFunction);
@@ -214,6 +223,7 @@ namespace KPVisionInspectionFramework
             if((int)eProjectType.NONE == ParamManager.SystemParam.ProjectType)              MainProcess.DeInitialize();
             else if ((int)eProjectType.SORTER == ParamManager.SystemParam.ProjectType)      ((MainProcessSorter)MainProcess).DeInitialize();
             else if ((int)eProjectType.TRIM_FORM == ParamManager.SystemParam.ProjectType)   ((MainProcessTrimForm)MainProcess).DeInitialize();
+            else if ((int)eProjectType.BC_QCC == ParamManager.SystemParam.ProjectType)      ((MainProcessCardManager)MainProcess).DeInitialize();
 
             for (int iLoopCount = 0; iLoopCount < ISMModuleCount; ++iLoopCount)
                 InspSysManager[iLoopCount].InspSysManagerEvent -= new CInspectionSystemManager.InspSysManagerHandler(InspectionSystemManagerEventFunction);

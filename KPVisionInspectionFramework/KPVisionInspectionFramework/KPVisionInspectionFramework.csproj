@@ -91,6 +91,7 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Class\Program.cs" />
+    <Compile Include="MainProcessClass\MainProcessCardManager.cs" />
     <Compile Include="MainProcessClass\MainProcessBase.cs" />
     <Compile Include="MainProcessClass\MainProcessTrimForm.cs" />
     <Compile Include="MainProcessClass\MainProcessSorter.cs" />
@@ -132,11 +133,20 @@
     <Compile Include="MainResultForm\ucMainResultNone.Designer.cs">
       <DependentUpon>ucMainResultNone.cs</DependentUpon>
     </Compile>
+    <Compile Include="MainResultForm\ucMainResultCardManager.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MainResultForm\ucMainResultCardManager.Designer.cs">
+      <DependentUpon>ucMainResultCardManager.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="MainForm\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainResultForm\MainResultBase.resx">
       <DependentUpon>MainResultBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainResultForm\ucMainResultCardManager.resx">
+      <DependentUpon>ucMainResultCardManager.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainResultForm\ucMainResultNone.resx">
       <DependentUpon>ucMainResultNone.cs</DependentUpon>

@@ -87,6 +87,7 @@ namespace DIOControlManager
 
             if (ProjectType == eProjectType.NONE)               DioBaseCmd = new DefaultCmd(IOCnt);
             else if (ProjectType == eProjectType.TRIM_FORM)     DioBaseCmd = new TrimFormCmd();
+            else if (ProjectType == eProjectType.BC_QCC)        DioBaseCmd = new CardManagerCmd();
         }
 
         public void InitializeControl()

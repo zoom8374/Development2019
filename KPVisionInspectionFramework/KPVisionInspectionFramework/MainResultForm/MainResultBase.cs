@@ -19,6 +19,7 @@ namespace KPVisionInspectionFramework
         private ucMainResultNone        MainResultNoneWnd;
         private ucMainResultSorter      MainResultSorterWnd;
         private ucMainResultTrimForm    MainResultTrimFormWnd;
+        private ucMainResultCardManager MainResultCardManagerWnd;
 
         private eProjectType ProjectType;
         private string[] LastRecipeName;
@@ -53,6 +54,12 @@ namespace KPVisionInspectionFramework
                 panelMain.Controls.Add(MainResultNoneWnd);
             }
 
+            else if (ProjectType == eProjectType.SORTER)
+            {
+                MainResultSorterWnd = new ucMainResultSorter(LastRecipeName);
+                panelMain.Controls.Add(MainResultSorterWnd);
+            }
+
             else if (ProjectType == eProjectType.TRIM_FORM)
             {
                 MainResultTrimFormWnd = new ucMainResultTrimForm(LastRecipeName);
@@ -60,10 +67,11 @@ namespace KPVisionInspectionFramework
                 panelMain.Controls.Add(MainResultTrimFormWnd);
             }
 
-            else if (ProjectType == eProjectType.SORTER)
+            else if (ProjectType == eProjectType.BC_QCC)
             {
-                MainResultSorterWnd = new ucMainResultSorter(LastRecipeName);
-                panelMain.Controls.Add(MainResultSorterWnd);
+                MainResultCardManagerWnd = new ucMainResultCardManager(LastRecipeName);
+                MainResultCardManagerWnd.ScreenshotEvent += new ucMainResultCardManager.ScreenshotHandler(ScreenShot);
+                panelMain.Controls.Add(MainResultCardManagerWnd);
             }
 
             SetWindowLocation(1482, 148);
@@ -84,6 +92,11 @@ namespace KPVisionInspectionFramework
             else if (ProjectType == eProjectType.TRIM_FORM)
             {
                 MainResultTrimFormWnd.ScreenshotEvent -= new ucMainResultTrimForm.ScreenshotHandler(ScreenShot);
+            }
+
+            else if (ProjectType == eProjectType.BC_QCC)
+            {
+                MainResultCardManagerWnd.ScreenshotEvent -= new ucMainResultCardManager.ScreenshotHandler(ScreenShot);
             }
 
             panelMain.Controls.Clear();
@@ -210,6 +223,7 @@ namespace KPVisionInspectionFramework
             if (ProjectType == eProjectType.NONE)           MainResultNoneWnd.ClearResult();
             else if (ProjectType == eProjectType.SORTER)    MainResultSorterWnd.ClearResult();
             else if (ProjectType == eProjectType.TRIM_FORM) MainResultTrimFormWnd.ClearResult();
+            else if (ProjectType == eProjectType.BC_QCC)    MainResultCardManagerWnd.ClearResult();
         }
 
         public void SetResultData(SendResultParameter _ResultParam)
@@ -218,6 +232,9 @@ namespace KPVisionInspectionFramework
             else if (_ResultParam.ProjectItem == eProjectItem.SURFACE)          MainResultSorterWnd.SetSurfaceResultData(_ResultParam);
             else if (_ResultParam.ProjectItem == eProjectItem.LEAD_TRIM_INSP)   MainResultTrimFormWnd.SetTrimResultData(_ResultParam);
             else if (_ResultParam.ProjectItem == eProjectItem.LEAD_FORM_ALIGN)  MainResultTrimFormWnd.SetFormResultData(_ResultParam);
+            else if (_ResultParam.ProjectItem == eProjectItem.BC_IMG_SAVE)      MainResultCardManagerWnd.SetImageSaveResultData(_ResultParam);
+            else if (_ResultParam.ProjectItem == eProjectItem.BC_ID)            MainResultCardManagerWnd.SetQrCodResultData(_ResultParam);
+            else if (_ResultParam.ProjectItem == eProjectItem.BC_EXIST)         MainResultCardManagerWnd.SetExistResultData(_ResultParam);
         }
 
         /// <summary>
@@ -231,6 +248,7 @@ namespace KPVisionInspectionFramework
 
             if (ProjectType == eProjectType.NONE)           MainResultNoneWnd.SetAutoMode(_AutoModeFlag);
             else if (ProjectType == eProjectType.TRIM_FORM) MainResultTrimFormWnd.SetAutoMode(_AutoModeFlag);
+            else if (ProjectType == eProjectType.BC_QCC)    MainResultCardManagerWnd.SetAutoMode(_AutoModeFlag);
 
             return _Result;
         }
@@ -239,6 +257,7 @@ namespace KPVisionInspectionFramework
         {
             if (_ProjectType == eProjectType.NONE)              MainResultNoneWnd.SetLastRecipeName(_LastRecipeName);
             else if (_ProjectType == eProjectType.TRIM_FORM)    MainResultTrimFormWnd.SetLastRecipeName(_LastRecipeName);
+            else if (_ProjectType == eProjectType.BC_QCC)       MainResultCardManagerWnd.SetLastRecipeName(_LastRecipeName);
         }
         
         private void ScreenShot(string ImageSaveFile)

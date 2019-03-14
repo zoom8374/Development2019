@@ -195,4 +195,9 @@ namespace DIOControlManager
     {
 
     }
+
+    public class CardManagerCmd : DIOBaseCommand
+    {
+
+    }
 }
