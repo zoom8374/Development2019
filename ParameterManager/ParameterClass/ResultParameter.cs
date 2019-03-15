@@ -294,6 +294,11 @@ namespace ParameterManager
         public double AlignY;
     }
 
+    public class SendSurfaceResult
+    {
+        public double TwoPointAngle;
+    }
+
     public class SendLeadResult
     {
         public int LeadCount;
@@ -313,9 +318,19 @@ namespace ParameterManager
         public double[] LeadWidthReal;
     }
 
-    public class SendSurfaceResult
+    public class SendCardImageSaveResult
     {
-        public double TwoPointAngle;
+
+    }
+
+    public class SendCardExistResult
+    {
+
+    }
+
+    public class SendCardIDResult
+    {
+
     }
     #endregion Last Send Result Parameter
 }

@@ -97,12 +97,32 @@ namespace InspectionSystemManager
 
         public delegate void InspectionWindowHandler(eIWCMD _Command, object _Value = null, int _ID = 0);
         public event InspectionWindowHandler InspectionWindowEvent;
+
+        private ToolTip InspMenuToolTip = new ToolTip();
         #endregion Inspection Variable
 
         #region Initialize & DeInitialize
         public InspectionWindow()
         {
             InitializeComponent();
+            #region ToolTip Setting
+            InspMenuToolTip.ShowAlways = true;
+            InspMenuToolTip.AutoPopDelay = 0;
+            InspMenuToolTip.InitialDelay = 0;
+            InspMenuToolTip.ReshowDelay = 500;
+            InspMenuToolTip.SetToolTip(btnInspection, "Inspection");
+            InspMenuToolTip.SetToolTip(btnOneShot, "One Shot Inspection");
+            InspMenuToolTip.SetToolTip(btnRecipe, "Teaching");
+            InspMenuToolTip.SetToolTip(btnRecipeSave, "Teaching Save");
+            InspMenuToolTip.SetToolTip(btnLive, "Camera Live");
+            InspMenuToolTip.SetToolTip(btnImageLoad, "Image Load");
+            InspMenuToolTip.SetToolTip(btnImageSave, "Image Save");
+            InspMenuToolTip.SetToolTip(btnImageAutoSave, "Image Auto Save");
+            InspMenuToolTip.SetToolTip(btnConfigSave, "Image Configuration Save");
+            InspMenuToolTip.SetToolTip(btnAutoDelete, "Set Image Auto Delete");
+            InspMenuToolTip.SetToolTip(btnCrossBar, "Cross Bar");
+            InspMenuToolTip.SetToolTip(btnImageResultDisplay, "Result Display");
+            #endregion
         }
 
         public void Initialize(Object _OwnerForm, int _ID, InspectionParameter _InspParam, eProjectType _ProjectType, eProjectItem _ProjectItem, string _FormName,string _RecipeName, bool _IsSimulationMode)
@@ -748,13 +768,11 @@ namespace InspectionSystemManager
         private bool Inspection()
         {
             bool _Result = false;
-
             IsInspectionComplete = false;
 
             do
             {
                 CLogManager.AddInspectionLog(CLogManager.LOG_TYPE.INFO, String.Format("ISM {0} - Inspection Start", ID + 1), CLogManager.LOG_LEVEL.LOW);
-                if (false == AutoTeaching()) break;
                 if (false == InspectionResultClear()) break;
                 if (false == InspectionProcess()) break;
                 if (false == InpsectionResultAnalysis()) break;
@@ -773,11 +791,6 @@ namespace InspectionSystemManager
 
             //CLogManager.AddInspectionLog(CLogManager.LOG_TYPE.INFO, String.Format("ISM {0} - Inspection Result : {1}", ID, ));
             return _Result;
-        }
-
-        private bool AutoTeaching()
-        {
-            return true;
         }
 
         private bool InspectionResultClear()
@@ -1386,7 +1399,8 @@ namespace InspectionSystemManager
             bool _Result = true;
 
             if (false == _Flag) Thread.Sleep(500);
-            InspectionWindowEvent(eIWCMD.INSP_COMPLETE, _Flag, ID);
+            var _InspectionWindowEvent = InspectionWindowEvent;
+            _InspectionWindowEvent?.Invoke(eIWCMD.INSP_COMPLETE, _Flag, ID);
 
             return _Result;
         }

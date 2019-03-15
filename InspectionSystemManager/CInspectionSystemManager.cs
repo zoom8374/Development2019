@@ -296,7 +296,7 @@ namespace InspectionSystemManager
         private void InspectionComplete(object _Value, int _ID)
         {
             var _InspSysManagerEvent = InspSysManagerEvent;
-            InspSysManagerEvent?.Invoke(eISMCMD.INSP_COMPLETE, _Value, _ID);
+            _InspSysManagerEvent?.Invoke(eISMCMD.INSP_COMPLETE, _Value, _ID);
         }
         #endregion Event : Inspection Window Event
 

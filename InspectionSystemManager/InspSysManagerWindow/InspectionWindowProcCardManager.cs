@@ -22,11 +22,8 @@ namespace InspectionSystemManager
             _SendResParam.IsGood = true;
             _SendResParam.ProjectItem = ProjectItem;
 
-            SendLeadResult _SendResult = new SendLeadResult();
-            for (int iLoopCount = 0; iLoopCount < AlgoResultParamList.Count; ++iLoopCount)
-            {
-
-            }
+            SendCardImageSaveResult _SendResult = new SendCardImageSaveResult();
+            _SendResParam.SendResult = _SendResult;
 
             return _SendResParam;
         }
@@ -39,7 +36,7 @@ namespace InspectionSystemManager
             _SendResParam.IsGood = true;
             _SendResParam.ProjectItem = ProjectItem;
 
-            SendLeadResult _SendResult = new SendLeadResult();
+            SendCardExistResult _SendResult = new SendCardExistResult();
             for (int iLoopCount = 0; iLoopCount < AlgoResultParamList.Count; ++iLoopCount)
             {
 
@@ -56,7 +53,7 @@ namespace InspectionSystemManager
             _SendResParam.IsGood = true;
             _SendResParam.ProjectItem = ProjectItem;
 
-            SendLeadResult _SendResult = new SendLeadResult();
+            SendCardIDResult _SendResult = new SendCardIDResult();
             for (int iLoopCount = 0; iLoopCount < AlgoResultParamList.Count; ++iLoopCount)
             {
 
